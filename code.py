@@ -1,4 +1,5 @@
 import selenium
+import bs4
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -22,4 +23,7 @@ find = driver.find_element(By.ID, "IDToken2")
 find.send_keys(password)
 time.sleep(1)
 webdriver.ActionChains(driver).send_keys(Keys.RETURN).perform()
-time.sleep(2)
+time.sleep(5)
+saturs = driver.page_source
+esaturs = bs4.BeautifulSoup(saturs, 'html.parser')
+atrada = esaturs.find('section', id='inst1602648', class_='block_calendar_upcoming block card mb-3') 
